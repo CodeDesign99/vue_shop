@@ -24,7 +24,13 @@ import {
     Tooltip,
     Pagination,
     Dialog,
-    MessageBox} from 'element-ui'
+    MessageBox,
+    Tag,
+    Checkbox,
+    CheckboxGroup,
+    Tree,
+    Select,
+    Option} from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -51,3 +57,9 @@ Vue.use(Tooltip)
 Vue.use(Pagination)
 Vue.use(Dialog)
 Vue.prototype.$confirm = MessageBox.confirm
+Vue.use(Tag)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(Tree)
+Vue.use(Select)
+Vue.use(Option)
