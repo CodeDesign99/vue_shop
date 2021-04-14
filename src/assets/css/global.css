@@ -18,3 +18,6 @@ body,
 .el-aside {
   transition: 0.5s;
 }
+.el-cascader-panel {
+  height: 210px;
+}

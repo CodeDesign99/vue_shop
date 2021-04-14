@@ -30,7 +30,8 @@ import {
     CheckboxGroup,
     Tree,
     Select,
-    Option} from 'element-ui'
+    Option,
+    Cascader} from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -63,3 +64,4 @@ Vue.use(CheckboxGroup)
 Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Cascader)
