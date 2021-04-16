@@ -34,7 +34,11 @@ import {
     Cascader,
     Alert,
     Tabs,
-    TabPane} from 'element-ui'
+    TabPane,
+    Step,
+    Steps,
+    Upload,
+    } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -71,3 +75,6 @@ Vue.use(Cascader)
 Vue.use(Alert)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Step)
+Vue.use(Steps)
+Vue.use(Upload)
