@@ -31,8 +31,12 @@
       <el-table :data="orderList" border stripe>
         <el-table-column type="index"></el-table-column>
         <el-table-column label="订单编号" prop="order_number"></el-table-column>
-        <el-table-column label="订单价格" prop="order_price"></el-table-column>
-        <el-table-column label="是否付款" prop="order_pay">
+        <el-table-column
+          label="订单价格"
+          prop="order_price"
+          width="100px"
+        ></el-table-column>
+        <el-table-column label="是否付款" prop="order_pay" width="105px">
           <template slot-scope="scope">
             <el-tag v-if="scope.row.order_pay === '0'" type="danger"
               >未付款</el-tag
@@ -40,13 +44,17 @@
             <el-tag v-else type="success">已付款</el-tag>
           </template>
         </el-table-column>
-        <el-table-column label="是否发货" prop="is_send"></el-table-column>
-        <el-table-column label="下单时间" prop="update_time">
+        <el-table-column
+          label="是否发货"
+          prop="is_send"
+          width="100px"
+        ></el-table-column>
+        <el-table-column label="下单时间" prop="update_time" width="200px">
           <template slot-scope="scope">
             {{ scope.row.update_time | dateFormat }}
           </template>
         </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作" width="230px">
           <template>
             <el-tooltip
               effect="dark"
@@ -129,7 +137,7 @@
       width="30%"
     >
       <!-- 物流信息时间线 -->
-      <el-timeline :reverse="reverse">
+      <el-timeline :reverse="false">
         <el-timeline-item
           v-for="(activity, index) in logisticsList"
           :key="index"
