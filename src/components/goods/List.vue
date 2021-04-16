@@ -59,7 +59,7 @@
               <!-- 编辑按钮 -->
               <el-button
                 type="primary"
-                class="el-icon-edit"
+                icon="el-icon-edit"
                 size="mini"
               ></el-button>
             </el-tooltip>
@@ -72,7 +72,7 @@
               <!-- 删除按钮 -->
               <el-button
                 type="danger"
-                class="el-icon-delete"
+                icon="el-icon-delete"
                 size="mini"
                 @click="removeGoodById(scope.row.goods_id)"
               ></el-button>

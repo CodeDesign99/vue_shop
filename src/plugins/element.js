@@ -38,6 +38,8 @@ import {
     Step,
     Steps,
     Upload,
+    Timeline,
+    TimelineItem
     } from 'element-ui'
 
 Vue.use(Button)
@@ -78,3 +80,5 @@ Vue.use(TabPane)
 Vue.use(Step)
 Vue.use(Steps)
 Vue.use(Upload)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
