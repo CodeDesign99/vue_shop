@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
 import './plugins/element.js'
 //导入全局样式
 import './assets/css/global.css'
