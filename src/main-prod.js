@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-// import BaiduMap from 'vue-baidu-map'
+import BaiduMap from 'vue-baidu-map'
 // import './plugins/element.js'
 //导入全局样式
 import './assets/css/global.css'
