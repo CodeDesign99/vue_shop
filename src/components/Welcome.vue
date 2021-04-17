@@ -1,77 +1,65 @@
 <template>
-  <div id="map"></div>
+  <div class="map">
+    <el-input
+      v-model="addressKeyword"
+      placeholder="请输入地址来直接查找相关位置"
+    ></el-input>
+    <!-- 给地图加点击事件getLocationPoint，点击地图获取位置相关的信息，经纬度啥的 -->
+    <!-- scroll-wheel-zoom：是否可以用鼠标滚轮控制地图缩放，zoom是视图比例 -->
+    <baidu-map
+      :scroll-wheel-zoom="true"
+      :center="location"
+      :zoom="zoom"
+      @click="getLocationPoint"
+      ak="YOUR_APP_KEY"
+    >
+      <bm-view class="bmView"></bm-view>
+      <bm-local-search
+        :keyword="addressKeyword"
+        :auto-viewport="true"
+        style="display: none"
+      ></bm-local-search>
+    </baidu-map>
+  </div>
 </template>
 
 <script>
-import { loadBMap } from '../../src/assets/js/map.js'
-import * as echarts from 'echarts'
-require('echarts/extension/bmap/bmap')
-
 export default {
   data() {
-    return {}
+    return {
+      location: {
+        lng: 116.404,
+        lat: 39.915
+      },
+      zoom: 12.8,
+      addressKeyword: ''
+    }
   },
-  mounted() {
-    var ROOT_PATH =
-      'https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples'
-    var myChart = echarts.init(document.getElementById('map'))
-    var option
-    $.get(ROOT_PATH + '/data/asset/data/hangzhou-tracks.json', function(data) {
-      var points = [].concat.apply(
-        [],
-        data.map(function(track) {
-          return track.map(function(seg) {
-            return seg.coord.concat([1])
-          })
-        })
-      )
-      myChart.setOption(
-        (option = {
-          animation: false,
-          bmap: {
-            center: [120.13066322374, 30.240018034923],
-            zoom: 14,
-            roam: true
-          },
-          visualMap: {
-            show: false,
-            top: 'top',
-            min: 0,
-            max: 5,
-            seriesIndex: 0,
-            calculable: true,
-            inRange: {
-              color: ['blue', 'blue', 'green', 'yellow', 'red']
-            }
-          },
-          series: [
-            {
-              type: 'heatmap',
-              coordinateSystem: 'bmap',
-              data: points,
-              pointSize: 5,
-              blurSize: 6
-            }
-          ]
-        })
-      )
-      // 添加百度地图插件
-      var bmap = myChart
-        .getModel()
-        .getComponent('bmap')
-        .getBMap()
-      bmap.addControl(new BMap.MapTypeControl())
-    })
-    this.$nextTick(() => {
-      loadBMap('DD279b2a90afdf0ae7a3796787a0742e').then(() => {
-        // this.drawPie()
+  methods: {
+    getLocationPoint(e) {
+      this.lng = e.point.lng
+      this.lat = e.point.lat
+      // 创建地址解析器的实例
+      let geoCoder = new BMap.Geocoder()
+
+      // 获取位置地址对应坐标
+      geoCoder.getPoint(this.addressKeyword, point => {
+        this.slelectsdLng = point.lng
+        this.slelectsdLat = point.lat
       })
-    })
-    // option && myChart.setOption(option)
-  },
-  methods: {},
-  components: {}
+      //利用坐标获取地址的详细信息
+      geoCoder.getLocation(e.point, res => {
+        console.log(res)
+      })
+    }
+  }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.bmView {
+  width: 100%;
+  height: 807px;
+  flex: 1;
+}
+</style>

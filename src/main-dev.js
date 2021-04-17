@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import $ from 'jquery';
-window.jQuery = $;
-window.$ = $;
+import BaiduMap from 'vue-baidu-map'
+
 import './plugins/element.js'
 //导入全局样式
 import './assets/css/global.css'
@@ -37,6 +36,11 @@ axios.interceptors.request.use(config=>{
 axios.interceptors.response.use(config=>{
   NProgress.done()
   return config
+})
+
+Vue.use(BaiduMap, {
+  /* Visit http://lbsyun.baidu.com/apiconsole/key for details about app key. */
+  ak: 'DD279b2a90afdf0ae7a3796787a0742e'
 })
 
 Vue.prototype.$http = axios
